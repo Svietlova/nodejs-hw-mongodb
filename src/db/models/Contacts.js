@@ -5,6 +5,7 @@ const ContactsSchema = new Schema(
     name: {
       type: String,
       required: true,
+      versionKey: false,
     },
     phoneNumber: {
       type: String,
