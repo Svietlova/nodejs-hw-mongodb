@@ -32,11 +32,11 @@ const setupServer = () => {
   app.use('*', notFoundHandler);
   app.use(errorHandler);
 
-  app.use((req, res) => {
-    res
-      .status(404)
-      .json({ status: 404, message: 'Contact not found', data: null });
-  });
+  // app.use((req, res) => {
+  //   res
+  //     .status(404)
+  //     .json({ status: 404, message: 'Contact not found', data: null });
+  // });
 
   app.listen(PORT, () => {
     console.info(`Server is running on port ${PORT}`);
