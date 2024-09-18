@@ -2,9 +2,10 @@ const parseBoolean = (value) => {
   const isString = typeof value === 'string';
   if (!isString) return;
 
-  const isFavorite = (value) => (value.toLowerCase() === 'true' ? true : false);
+  const isFavourite = (value) =>
+    value.toLowerCase() === 'true' ? true : false;
 
-  if (isFavorite(value)) return value;
+  if (isFavourite(value)) return value;
 };
 
 const parseType = (value) => {
@@ -17,13 +18,13 @@ const parseType = (value) => {
 };
 
 export const parseFilterParams = (query) => {
-  const { isFavorite, contactType } = query;
+  const { isFavourite, contactType } = query;
 
-  const parsedFavorite = parseBoolean(isFavorite);
+  const parsedFavourite = parseBoolean(isFavourite);
   const parsedType = parseType(contactType);
 
   return {
-    isFavorite: parsedFavorite,
+    isFavourite: parsedFavourite,
     contactType: parsedType,
   };
 };
