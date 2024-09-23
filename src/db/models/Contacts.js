@@ -24,6 +24,11 @@ const ContactsSchema = new Schema(
       required: false,
       default: 'personal',
     },
+    userId: {
+      type: String,
+      required: true,
+      ref: 'users',
+    },
   },
   {
     versionKey: false,

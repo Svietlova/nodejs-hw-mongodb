@@ -1,10 +1,12 @@
 import express from 'express';
 import cors from 'cors';
 import pino from 'pino-http';
+import cookieParser from 'cookie-parser';
+
 import { env } from './utils/env.js';
-import contactsRouter from './routers/contacts.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
+import router from './routers/index.js';
 
 const PORT = Number(env('PORT', '3000'));
 
@@ -27,16 +29,12 @@ const setupServer = () => {
     }),
   );
 
-  app.use(contactsRouter);
+  app.use(cookieParser());
+
+  app.use(router);
 
   app.use('*', notFoundHandler);
   app.use(errorHandler);
-
-  // app.use((req, res) => {
-  //   res
-  //     .status(404)
-  //     .json({ status: 404, message: 'Contact not found', data: null });
-  // });
 
   app.listen(PORT, () => {
     console.info(`Server is running on port ${PORT}`);
