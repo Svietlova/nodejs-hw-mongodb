@@ -27,7 +27,7 @@ const ContactsSchema = new Schema(
     userId: {
       type: String,
       required: true,
-      ref: 'users',
+      ref: 'user',
     },
   },
   {
