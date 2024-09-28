@@ -21,13 +21,13 @@ export const getContactsController = async (req, res) => {
     perPage,
     sortBy,
     sortOrder,
-    filter,
+    filter: { ...filter, userId },
     userId,
   });
 
-  if (contacts.data.length === 0) {
-    throw createHttpError(404, 'Contacts not found');
-  }
+  // if (contacts.data.length === 0) {
+  //   throw createHttpError(404, 'Contacts not found');
+  // }
 
   res.json({
     status: 200,
